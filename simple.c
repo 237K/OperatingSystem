@@ -1,21 +1,31 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	[Operating System]
+//
+//	OS Linux
+//	2019. 04. 21
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	리눅스 커널 모듈 추가, 제거, 로그 확인
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
 
-/* This function is called when the module is loaded. */
+//	커널모듈이 성공적으로 추가되었을 때 메시지 출력
 int simple_init(void)
 {
        printk(KERN_INFO "Loading Module\n");
-
        return 0;
 }
 
-/* This function is called when the module is removed. */
+//	커널모듈이 제거되었을 때 메시지 출력
 void simple_exit(void) {
 	printk(KERN_INFO "Removing Module\n");
 }
 
-/* Macros for registering module entry and exit points. */
 module_init( simple_init );
 module_exit( simple_exit );
 
